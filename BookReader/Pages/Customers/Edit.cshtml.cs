@@ -30,7 +30,7 @@ namespace BookReader.Pages.Customers
                 return NotFound();
             }
 
-            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.ID == id);
+            Customer = await _context.Customer.FirstOrDefaultAsync(m => m.CustomerID == id);
 
             if (Customer == null)
             {
@@ -56,7 +56,7 @@ namespace BookReader.Pages.Customers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CustomerExists(Customer.ID))
+                if (!CustomerExists(Customer.CustomerID))
                 {
                     return NotFound();
                 }
@@ -71,7 +71,7 @@ namespace BookReader.Pages.Customers
 
         private bool CustomerExists(int id)
         {
-            return _context.Customer.Any(e => e.ID == id);
+            return _context.Customer.Any(e => e.CustomerID == id);
         }
     }
 }

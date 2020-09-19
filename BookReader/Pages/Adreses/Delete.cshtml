@@ -52,12 +52,12 @@
             @Html.DisplayNameFor(model => model.Adres.Customer)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Adres.Customer.ID)
+            @Html.DisplayFor(model => model.Adres.Customer.CustomerID)
         </dd>
     </dl>
     
     <form method="post">
-        <input type="hidden" asp-for="Adres.ID" />
+        <input type="hidden" asp-for="Adres.AdresID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-page="./Index">Back to List</a>
     </form>

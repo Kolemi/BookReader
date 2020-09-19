@@ -21,7 +21,7 @@ namespace BookReader.Pages.Adreses
 
         public IActionResult OnGet()
         {
-        ViewData["ID"] = new SelectList(_context.Customer, "ID", "ID");
+        ViewData["AdresID"] = new SelectList(_context.Customer, "CustomerID", "CustomerID");
             return Page();
         }
 
