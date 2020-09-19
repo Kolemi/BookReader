@@ -12,6 +12,6 @@ namespace BookReader.Models
         public string Description { get; set; }
         public string Author { get; set; }
         public Decimal Price { get; set; }
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
