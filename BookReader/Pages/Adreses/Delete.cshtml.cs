@@ -30,7 +30,7 @@ namespace BookReader.Pages.Adreses
             }
 
             Adres = await _context.Adres
-                .Include(a => a.Customer).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(a => a.Customer).FirstOrDefaultAsync(m => m.AdresID == id);
 
             if (Adres == null)
             {

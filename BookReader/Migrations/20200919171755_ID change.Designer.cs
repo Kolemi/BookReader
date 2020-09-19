@@ -3,14 +3,16 @@ using BookReader.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BookReader.Migrations
 {
     [DbContext(typeof(BookReaderContext))]
-    partial class BookReaderContextModelSnapshot : ModelSnapshot
+    [Migration("20200919171755_ID change")]
+    partial class IDchange
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

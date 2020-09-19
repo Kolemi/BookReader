@@ -31,13 +31,13 @@ namespace BookReader.Pages.Adreses
             }
 
             Adres = await _context.Adres
-                .Include(a => a.Customer).FirstOrDefaultAsync(m => m.ID == id);
+                .Include(a => a.Customer).FirstOrDefaultAsync(m => m.AdresID == id);
 
             if (Adres == null)
             {
                 return NotFound();
             }
-           ViewData["ID"] = new SelectList(_context.Customer, "ID", "ID");
+           ViewData["AdresID"] = new SelectList(_context.Customer, "CustomerID", "CustomerID");
             return Page();
         }
 
@@ -58,7 +58,7 @@ namespace BookReader.Pages.Adreses
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!AdresExists(Adres.ID))
+                if (!AdresExists(Adres.AdresID))
                 {
                     return NotFound();
                 }
@@ -73,7 +73,7 @@ namespace BookReader.Pages.Adreses
 
         private bool AdresExists(int id)
         {
-            return _context.Adres.Any(e => e.ID == id);
+            return _context.Adres.Any(e => e.AdresID == id);
         }
     }
 }
