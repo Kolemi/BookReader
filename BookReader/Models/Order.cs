@@ -15,7 +15,12 @@ namespace BookReader.Models
     {
         public int OrderID { get; set; }
         [DataType(DataType.Date)]
-        public DateTime OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
         public Status Status { get; set; }
+        public string ShipName { get; set; }
+        public string ShipCountry { get; set; }
+        public string ShipCity { get; set; }
+        public string ShipZipCode { get; set; }
+        public string ShipAddress { get; set; }
     }
 }
