@@ -16,6 +16,9 @@ namespace BookReader.Models
         public Decimal Price { get; set; }
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }
-        public virtual Category Category { get; set; }
+        public int CategoryID { get; set; }
+
+        public Category Category { get; set; }
+        public ICollection<OrderItem> OrderItems { get; set; }
     }
 }
