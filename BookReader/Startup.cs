@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using BookReader.Data;
+using BookReader.Services;
 
 namespace BookReader
 {
@@ -26,6 +27,11 @@ namespace BookReader
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            services.AddTransient<CustomerService>();
+            services.AddTransient<OrderService>();
+            services.AddTransient<OrderItemService>();
+            services.AddTransient<BookService>();
+            services.AddTransient<CategoryService>();
 
             services.AddDbContext<BookReaderContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BookReaderContext")));
