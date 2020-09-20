@@ -14,8 +14,15 @@ namespace BookReader.Data
         {
         }
 
-        public DbSet<BookReader.Models.Customer> Customer { get; set; }
-
-        public DbSet<BookReader.Models.Adres> Adres { get; set; }
+        public DbSet<BookReader.Models.Customer> Customers { get; set; }
+        public DbSet<BookReader.Models.Book> Books { get; set; }
+        public DbSet<BookReader.Models.Category> Categories { get; set; }
+        public DbSet<BookReader.Models.Order> Orders { get; set; }
+        public DbSet<BookReader.Models.OrderItem> OrderItems { get; set; }
+        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>().ToTable("Customer");
+        }
     }
 }
