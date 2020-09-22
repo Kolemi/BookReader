@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BookReader.Pages
 {
-    public class NewModel : PageModel
+    public class RegistrationModel : PageModel
     {
         public void OnGet()
         {

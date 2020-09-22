@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace BookReader.Pages.Admin
+namespace BookReader.Pages
 {
-    public class IndexModel : PageModel
+    public class BookShopModel : PageModel
     {
         public void OnGet()
         {

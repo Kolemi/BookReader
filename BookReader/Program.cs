@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Identity;
-
+using BookReader.Models;
 
 ///namespace PasswordHasherTest
 
@@ -22,32 +22,23 @@ namespace BookReader
         {
             var host = CreateHostBuilder(args).Build();
 
-            CreateDbIfNotExists(host);
-
-            host.Run();
-
-            var passwordHasher = new PasswordHasher<string>();
-            Console.WriteLine(passwordHasher.HashPassword(null, "strong password"));
-            Console.ReadLine();
-        }
-
-        private static void CreateDbIfNotExists(IHost host)
-        {
             using (var scope = host.Services.CreateScope())
             {
                 var services = scope.ServiceProvider;
 
                 try
                 {
-                    var context = services.GetRequiredService<BookReaderContext>();
-                    context.Database.EnsureCreated();
+                    SeedData.Initialize(services);
                 }
                 catch (Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError(ex, "An error occurred creating the DB.");
+                    logger.LogError(ex, "An error occurred seeding the DB.");
                 }
             }
+
+            host.Run();
+
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -56,5 +47,14 @@ namespace BookReader
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+        /*            CreateHostBuilder(args).Build().Run();
+                }
+
+                public static IHostBuilder CreateHostBuilder(string[] args) =>
+                    Host.CreateDefaultBuilder(args)
+                        .ConfigureWebHostDefaults(webBuilder =>
+                        {
+                            webBuilder.UseStartup<Startup>();
+                        });*/
     }
 }

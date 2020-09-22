@@ -1,0 +1,61 @@
+﻿@page
+@model BookReader.Pages.OrdersItems.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItem[0].UnitPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItem[0].Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItem[0].Discount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItem[0].Order)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderItem[0].Book)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.OrderItem) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Book.BookID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.OrderItemID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.OrderItemID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.OrderItemID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
